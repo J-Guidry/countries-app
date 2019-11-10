@@ -5,3 +5,77 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+}
+
+.header {
+    font-weight: 300;
+    display: flex;
+    padding: 20px;
+    -webkit-box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
+    -moz-box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
+    box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
+    border-bottom: 1px solid white;
+}
+
+.header h1 {
+    font-size: 1.1rem;
+}
+
+.mode {
+    border: none;
+    margin-left: 0px;
+    background-color: white;
+    margin-left: auto;
+}
+
+.icon-moon-o {
+    margin-right: 5px;
+}
+
+main {
+    margin: 30px auto;
+    background-color: hsl(0, 0%, 98%);
+    /* max-width: 90%; */
+    padding: 5%;
+}
+
+input {
+    padding: 10px;
+    display: block;
+    width: 90%;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    border: none;
+    background: white;
+    -webkit-box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
+    -moz-box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
+    box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
+}
+
+input::placeholder {
+    padding-left: 5px;
+}
+
+.select-country {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 50%;
+    background: url("fonts/icon-arrow.svg") 95% center no-repeat;
+    background-size: 10px 4px;
+    display: block;
+    border-radius: 5px;
+    -webkit-box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
+    -moz-box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
+    box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
+}
+
