@@ -1,5 +1,5 @@
 const listParent = document.querySelector(".output");
-// const input = document.querySelector("#input").value;
+const input = document.querySelector("#input");
 const selectRegion = document.querySelector(".select-country");
 
 const initCountries = ['usa', 'germany', 'brazil', 'iceland'];
@@ -48,8 +48,9 @@ function populateUl(data, ul) {
     
 
     flag.setAttribute("src", data.flag);
-    flag.setAttribute("width", "300px");
-
+    flag.setAttribute("width", "100%");
+    flag.setAttribute("height", "auto");
+    flag.setAttribute("alt", `flag of ${data.name}`)
     li.appendChild(flag);
     name.textContent = data.name;
     li.appendChild(name);
@@ -90,4 +91,25 @@ selectRegion.onclick = () => {
     }
 }
 
+
+
 initial(initCountries);
+
+input.addEventListener("keypress", function(event) {
+    if(event.which === 13) {
+        const url = new URL(`https://restcountries.eu/rest/v2/name/${input.value}`);
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            if(listParent.firstChild !== null){
+                listParent.firstElementChild.remove();
+            }
+            const ul = document.createElement("ul");
+            ul.setAttribute("class", "list");
+            listParent.appendChild(ul);
+            populateUl(data[0], ul);
+        })
+        .then(err => err)
+    }
+             
+});
