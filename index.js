@@ -1,18 +1,22 @@
 const listParent = document.querySelector(".output");
-// var input = document.querySelector("#input").value;
+// const input = document.querySelector("#input").value;
+const selectRegion = document.querySelector(".select-country");
 
 const initCountries = ['usa', 'germany', 'brazil', 'iceland'];
 
 const initial = (init) => {
+    const ul = document.createElement("ul");
+    ul.setAttribute("class", "list");
+    listParent.appendChild(ul);
     const firstFour = async () => {
         for(let i = 0; i < 4; i++){
             let url = new URL(`https://restcountries.eu/rest/v2/all`);
             fetch(url)
             .then(res => res.json())
             .then(data => {  
-                return populateUl(data[i]);
+                return populateUl(data[i], ul);
             })
-            .catch(err => console.log(err));
+            .catch(err => err);
         }
     }
     const fourPromise = new Promise(resolve => {
@@ -21,18 +25,16 @@ const initial = (init) => {
             fetch(url)
             .then(res => res.json())
             .then(data => {
-                populateUl(data[0]);
+                populateUl(data[0], ul);
                 return resolve(firstFour);
             })
-            //.then(()=> resolve(firstFour))
         }
     });
 
     fourPromise.then((result) => result());
 }
 
-function populateUl(data) {
-    const ul = document.createElement("ul");
+function populateUl(data, ul) {
     const li = document.createElement("li");
     const flag = document.createElement("img");
     const detail = document.createElement("a");
@@ -43,9 +45,8 @@ function populateUl(data) {
     const span = document.createElement("span");
     const span2 = document.createElement("span");
     const span3 = document.createElement("span");
+    
 
-    console.log(data);
-    listParent.appendChild(ul);
     flag.setAttribute("src", data.flag);
     flag.setAttribute("width", "300px");
 
@@ -68,6 +69,25 @@ function populateUl(data) {
     capital.prepend(span3);
     li.appendChild(capital);
     ul.appendChild(li);
+}
+
+selectRegion.onclick = () => {
+    if(selectRegion.value !== "filter"){
+        let url = new URL(`https://restcountries.eu/rest/v2/region/${selectRegion.value}`)
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            if(listParent.firstChild !== null){
+                listParent.firstElementChild.remove();
+            }
+            const ul = document.createElement("ul");
+            ul.setAttribute("class", "list");
+            listParent.appendChild(ul);
+            data.forEach(function(country) {
+                populateUl(country, ul);
+            })
+        });
+    }
 }
 
 initial(initCountries);
