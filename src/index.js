@@ -1,7 +1,7 @@
 const listParent = document.querySelector(".output");
 const input = document.querySelector("#input");
 const selectRegion = document.querySelector(".select-country");
-
+const detail = document.querySelector("a");
 const initCountries = ['usa', 'germany', 'brazil', 'iceland'];
 
 const initial = (init) => {
@@ -45,7 +45,6 @@ function populateUl(data, ul) {
     const span = document.createElement("span");
     const span2 = document.createElement("span");
     const span3 = document.createElement("span");
-    
 
     flag.setAttribute("src", data.flag);
     flag.setAttribute("width", "100%");
@@ -53,7 +52,11 @@ function populateUl(data, ul) {
     flag.setAttribute("alt", `flag of ${data.name}`)
     li.appendChild(flag);
     name.textContent = data.name;
-    li.appendChild(name);
+
+    detail.setAttribute("class", "detail");
+    detail.appendChild(name);
+    detail.onclick = renderDetail.bind(this, li, data);
+    li.appendChild(detail);
 
     population.textContent = data.population.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     span.textContent = "Population: ";
@@ -91,10 +94,6 @@ selectRegion.onclick = () => {
     }
 }
 
-
-
-initial(initCountries);
-
 input.addEventListener("keypress", function(event) {
     if(event.which === 13) {
         const url = new URL(`https://restcountries.eu/rest/v2/name/${input.value}`);
@@ -113,3 +112,26 @@ input.addEventListener("keypress", function(event) {
     }
              
 });
+
+function renderDetail(li, data){
+    document.querySelector("main").remove();
+    const body = document.querySelector("body");
+    const main = document.createElement("main");
+    const ul = document.createElement("ul");
+
+    ul.setAttribute("class", "list");
+    //create p elements
+    const name = li.childNodes[1];
+    name.onclick = "";
+    const region = li.childNodes[3];
+
+    name.after(data.nativeName);
+    region.after(data.subregion);
+    ul.appendChild(li);
+    main.appendChild(ul);
+    body.appendChild(main);
+}
+
+
+//initial(initCountries);
+
