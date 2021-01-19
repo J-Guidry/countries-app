@@ -1,119 +1,223 @@
-html {
-    box-sizing: border-box;
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
+@media (min-width: 576px) {
+  .container,
+  .container-sm {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container,
+  .container-sm,
+  .container-md {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    max-width: 1340px;
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
 }
 
 .header {
-    font-weight: 300;
-    display: flex;
-    padding: 20px;
-    -webkit-box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
-    -moz-box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
-    box-shadow: -40px 17px 38px -44px rgba(0,0,0,0.75);
-    border-bottom: 1px solid white;
+  font-weight: 300;
+  display: flex;
+  padding: 20px;
+  -webkit-box-shadow: 9px -4px 14px 4px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 9px -4px 14px 4px rgba(0, 0, 0, 0.44);
+  box-shadow: 9px -4px 14px 4px rgba(0, 0, 0, 0.44);
+  border-bottom: 1px solid white;
+  justify-content: space-around;
 }
 
 .header h1 {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 .mode {
-    border: none;
-    margin-left: 0px;
-    background-color: white;
-    margin-left: auto;
+  border: none;
+  margin-left: 0px;
+  background-color: white;
+  cursor: pointer;
 }
 
 .icon-moon-o {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 main {
-    margin: 30px auto;
-    background-color: hsl(0, 0%, 98%);
-    /* max-width: 90%; */
-    padding: 5%;
+  margin: 30px auto;
+  background-color: hsl(0, 0%, 98%);
+  /* max-width: 90%; */
+  padding: 5%;
+}
+
+.action {
+  display: flex;
+  justify-content: space-between;
 }
 
 .input-with-icon {
-    position: relative;
+  position: relative;
+  width: 100%;
 }
 
 .icon-search {
-    position: relative;
-    bottom: 27px;
-    color: hsl(0, 0%, 62%);
-    margin-left: 10px;
+  position: relative;
+  bottom: 27px;
+  color: hsl(0, 0%, 62%);
+  margin-left: 10px;
 }
 
-input {
-    padding: 10px;
-    padding-left: 35px;
-    display: block;
-    width: 90%;
-    margin-bottom: 0px;
-    border-radius: 5px;
-    border: none;
-    background-color: white;
-    color: hsl(200, 15%, 8%);
-    -webkit-box-shadow: 1px 1px 2px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 1px 1px 2px -2px rgba(0,0,0,0.75);
-    box-shadow: 1px 1px 2px -2px rgba(0,0,0,0.75);
+#input {
+  padding: 10px;
+  padding-left: 35px;
+  display: block;
+  width: 35%;
+  margin-bottom: 0px;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+  color: hsl(200, 15%, 8%);
+  /* -webkit-box-shadow: 1px 1px 2px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 2px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 2px -2px rgba(0, 0, 0, 0.75); */
+  -webkit-box-shadow: 1px -2px 7px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px -2px 7px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px -2px 7px 1px rgba(0, 0, 0, 0.2);
 }
 
 .select-country {
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
 
-    border: none;
-    background-color: white;
-    padding-left: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 50%;
-    background: url("images/icon-arrow.svg") 95% center no-repeat;
-    background-size: 6px 6px;
-    display: block;
-    border-radius: 5px;
-    -webkit-box-shadow: 1px 1px 2px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 1px 1px 2px -2px rgba(0,0,0,0.75);
-    box-shadow: 1px 1px 2px -2px rgba(0,0,0,0.75);
+  border: none;
+  background-color: white;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 30%;
+  background: url("../images/icon-arrow.svg") 95% center no-repeat;
+  background-size: 6px 6px;
+  display: block;
+  border-radius: 5px;
+  /* -webkit-box-shadow: 1px 1px 2px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 2px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 2px -2px rgba(0, 0, 0, 0.75); */
+  -webkit-box-shadow: 1px -2px 7px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px -2px 7px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px -2px 7px 1px rgba(0, 0, 0, 0.2);
 }
 
 ul {
-    padding-left: 0;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 #output li {
-    width: 290px;
-    margin: auto;
-    -webkit-box-shadow: 1px 1px 2px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 1px 1px 2px -2px rgba(0,0,0,0.75);
-    box-shadow: 1px 1px 2px -2px rgba(0,0,0,0.75);
-    margin-bottom: 25px;
-    padding-left: 20px;
-    padding-bottom: 20px;
-    list-style-type: none;
+  width: 290px;
+  height: 370px;
+  margin: auto;
+  -webkit-box-shadow: 1px 1px 2px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 2px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 12px -2px rgba(0, 0, 0, 0.4);
+  margin-bottom: 25px;
+  /* padding-left: 20px; */
+  padding-bottom: 30px;
+  list-style-type: none;
+  border-radius: 15px;
 }
 
 main span {
-    font-weight: 600;
+  font-weight: 600;
 }
 a {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 a:hover {
-    color: grey;
+  color: grey;
+}
+
+.info {
+  padding-left: 20px;
+  padding-bottom: 15px;
+}
+
+.flag-img {
+  height: 200px;
+  width: 290px;
+  border-radius: 15px 15px 0 0;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 700px) {
+  #input {
+    width: 90%;
+  }
+
+  .select-country {
+    width: 300px;
+  }
+
+  .action {
+    flex-direction: column;
+    display: flex;
+  }
 }
