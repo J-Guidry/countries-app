@@ -51,7 +51,15 @@ export default class CountriesApp extends React.Component {
   // }
 
   toggleTheme(theme) {
-    this.setState((state) => ({ lightTheme: !state.lightTheme }));
+    this.setState(
+      (state) => ({ lightTheme: !state.lightTheme }),
+      () => {
+        console.log(this.state.themes[theme]);
+        Object.entries(this.state.themes[theme]).map(([color, value]) => {
+          document.documentElement.style.setProperty(color, value);
+        });
+      }
+    );
   }
 
   //handleRegionSelect(option) {
@@ -82,11 +90,11 @@ export default class CountriesApp extends React.Component {
 
   render() {
     return (
-      <div id="app">
+      <div>
         <Header light={this.state.lightTheme} handleToggle={this.toggleTheme} />
         <main>
           <div className="container">
-            <Actions />
+            <Actions light={this.state.lightTheme} />
             <ul className="output"></ul>
           </div>
         </main>

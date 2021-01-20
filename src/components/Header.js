@@ -10,13 +10,12 @@ export default class Header extends Component {
   }
 
   toggleTheme() {
-    console.log(this);
     this.setState((state, props) => {
       if (state.switchLabel === "Dark Mode" && props.light === true) {
-        props.handleToggle("light");
+        props.handleToggle("dark");
         return { switchLabel: "Light Mode" };
       } else {
-        props.handleToggle("dark");
+        props.handleToggle("light");
         return { switchLabel: "Dark Mode" };
       }
     });
