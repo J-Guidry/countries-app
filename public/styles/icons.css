@@ -14,7 +14,7 @@
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icomoon" !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -26,15 +26,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow-left:before {
+  content: "\e900";
+}
 .icon-search:before {
-  content: "\f002";
-}
-.icon-angle-down:before {
-  content: "\f107";
-}
-.icon-long-arrow-left:before {
-  content: "\f177";
+  content: "\e902";
 }
 .icon-moon-o:before {
-  content: "\f186";
+  content: "\e903";
+}
+.icon-sun:before {
+  content: "\e9d4";
 }
