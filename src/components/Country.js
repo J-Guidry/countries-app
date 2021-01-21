@@ -2,12 +2,27 @@ import React from "react";
 
 const Country = (props) => (
   <li>
-    <img className="flag-img" src={props.flag} alt={props.name} />
+    <div className="flag">
+      <img
+        className="flag-img"
+        src={props.flag}
+        alt={`Flag of ${props.name}`}
+      />
+    </div>
     <div className="info">
-      <h2>{props.name}</h2>
-      <p>Population: {props.population}</p>
-      <p>Region: {props.region}</p>
-      <p>Capital: {props.capital}</p>
+      <h3>{props.name}</h3>
+      <p>
+        {" "}
+        <span className="country-label">Population:</span> {props.population}
+      </p>
+      <p>
+        {" "}
+        <span className="country-label">Region:</span> {props.region}
+      </p>
+      <p>
+        {" "}
+        <span className="country-label">Capital:</span> {props.capital}
+      </p>
     </div>
   </li>
 );
