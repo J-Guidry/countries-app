@@ -12,7 +12,7 @@ export default function Actions(props) {
     <div className="action">
       <div className="input-with-icon">
         <input
-          onChange={props.handleInput}
+          onKeyDown={props.handleInput}
           placeholder="Search for a country..."
           className="input"
           required

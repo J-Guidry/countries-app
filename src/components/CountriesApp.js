@@ -9,6 +9,7 @@ export default class CountriesApp extends React.Component {
     super(props);
     this.handleRegionSelect = this.handleRegionSelect.bind(this);
     this.toggleTheme = this.toggleTheme.bind(this);
+    this.handleInput = this.handleInput.bind(this);
     this.state = {
       lightTheme: true,
       themes: {
@@ -45,7 +46,6 @@ export default class CountriesApp extends React.Component {
     this.setState(
       (state) => ({ lightTheme: !state.lightTheme }),
       () => {
-        console.log(this.state.themes[theme]);
         Object.entries(this.state.themes[theme]).map(([color, value]) => {
           document.documentElement.style.setProperty(color, value);
         });
@@ -60,7 +60,7 @@ export default class CountriesApp extends React.Component {
       fetch(url)
         .then((res) => res.json())
         .then((countries) => {
-          this.setState((prevState) => {
+          this.setState(() => {
             return { countries: countries };
           });
         });
@@ -68,7 +68,18 @@ export default class CountriesApp extends React.Component {
   }
 
   handleInput(evt) {
-    console.log(evt.target.value);
+    if (evt.key === "Enter") {
+      const input = evt.target.value;
+      const url = new URL(`https://restcountries.eu/rest/v2/name/${input}`);
+      fetch(url)
+        .then((res) => res.json())
+        .then((country) => {
+          this.setState(() => {
+            return { countries: country };
+          });
+        })
+        .then((err) => err);
+    }
   }
 
   render() {
