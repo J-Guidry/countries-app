@@ -2,19 +2,12 @@
 import React from "react";
 import Header from "./Header";
 import Actions from "./Actions";
-/*header
-    title - no logic
-    dark.light toggle switch
-  action
-    input
-    select
-  countrylist
-    country
-*/
+import Countries from "./Countries";
+
 export default class CountriesApp extends React.Component {
   constructor(props) {
     super(props);
-    //this.handleRegionSelect = this.handleRegionSelect.bind(this);
+    this.handleRegionSelect = this.handleRegionSelect.bind(this);
     this.toggleTheme = this.toggleTheme.bind(this);
     this.state = {
       lightTheme: true,
@@ -34,21 +27,19 @@ export default class CountriesApp extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   let initCountries = ["usa", "germany", "brazil", "iceland"];
-  //   initCountries.forEach((country) => {
-  //     let url = new URL(`https://restcountries.eu/rest/v2/name/${country}`);
-  //     fetch(url)
-  //       .then((res) => res.json())
-  //       .then((objdata) => {
-  //         //populateUl(data[0], ul);
-  //         //return resolve(firstFour);
-  //         this.setState((prevState) => ({
-  //           countries: prevState.countries.concat(objdata),
-  //         }));
-  //       });
-  //   });
-  // }
+  componentDidMount() {
+    let initCountries = ["usa", "germany", "brazil", "iceland"];
+    initCountries.forEach((country) => {
+      let url = new URL(`https://restcountries.eu/rest/v2/name/${country}`);
+      fetch(url)
+        .then((res) => res.json())
+        .then((objdata) => {
+          this.setState((prevState) => ({
+            countries: prevState.countries.concat(objdata),
+          }));
+        });
+    });
+  }
 
   toggleTheme(theme) {
     this.setState(
@@ -62,31 +53,23 @@ export default class CountriesApp extends React.Component {
     );
   }
 
-  //handleRegionSelect(option) {
-  // if (e.value !== "filter") {
-  //   let url = new URL(
-  //     `https://restcountries.eu/rest/v2/region/${selectRegion.value}`
-  //   );
-  //   fetch(url)
-  //     .then((res) => res.json())
-  //     //.then((data) => {
-  //   if (listParent.firstChild !== null) {
-  //     listParent.firstElementChild.remove();
-  //   }
-  //   const ul = document.createElement("ul");
-  //   ul.setAttribute("class", "list");
-  //   listParent.appendChild(ul);
-  //   data.forEach(function (country) {
-  //     populateUl(country, ul);
-  //   });
-  // });
-  //}
-  //}
-  // this.setState((prevState) => ({
-  //   countries: prevState.countries.concat(option),
-  // }));
-  //handleRegionSelect={this.handleRegionSelect}
-  //}
+  handleRegionSelect(evt) {
+    let region = evt.target.value;
+    if (region !== "Filter by Region") {
+      let url = new URL(`https://restcountries.eu/rest/v2/region/${region}`);
+      fetch(url)
+        .then((res) => res.json())
+        .then((countries) => {
+          this.setState((prevState) => {
+            return { countries: countries };
+          });
+        });
+    }
+  }
+
+  handleInput(evt) {
+    console.log(evt.target.value);
+  }
 
   render() {
     return (
@@ -94,8 +77,15 @@ export default class CountriesApp extends React.Component {
         <Header light={this.state.lightTheme} handleToggle={this.toggleTheme} />
         <main>
           <div className="container">
-            <Actions light={this.state.lightTheme} />
-            <ul className="output"></ul>
+            <Actions
+              light={this.state.lightTheme}
+              regionSelect={this.handleRegionSelect}
+              handleInput={this.handleInput}
+            />
+            <Countries
+              countriesLength={this.state.countries.length}
+              countries={this.state.countries}
+            />
           </div>
         </main>
       </div>

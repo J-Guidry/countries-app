@@ -32,5 +32,3 @@ export default class Header extends Component {
     );
   }
 }
-
-//logic will be to toggle theme style
