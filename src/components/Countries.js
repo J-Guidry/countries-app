@@ -15,6 +15,12 @@ const Countries = (props) => (
               .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
             region={country.region}
             capital={country.capital}
+            borders={country.borders}
+            nativeName={country.nativeName}
+            topLevelDomain={country.topLevelDomain}
+            currencies={country.currencies}
+            languages={country.languages}
+            subRegion={country.subregion}
           />
         ))}
       </ul>

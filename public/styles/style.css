@@ -213,8 +213,13 @@ a {
   cursor: pointer;
 }
 
-a:hover {
-  color: grey;
+a:visited,
+a:active,
+a:link,
+a:hover,
+a {
+  color: unset;
+  text-decoration: none;
 }
 
 .info {
@@ -234,9 +239,115 @@ a:hover {
   object-fit: cover;
 }
 
+.back-btn {
+  display: block;
+}
+
+.country-detail-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+.flag-detail {
+  width: 500px;
+  align-self: start;
+}
+
+.flag-detail img {
+  height: 100%;
+  width: 100%;
+}
+
+.country-detail {
+  /* display: inline-block; */
+}
+
+.detail-column {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+
+.border-countries {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+}
+
+.border-countries a {
+  margin: 0px 8px 20px;
+  display: inline-block;
+}
+
+.border-country {
+  -webkit-box-shadow: 1px 1px 12px -2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px 1px 12px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 12px -2px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+}
+
+.back-btn {
+  margin-left: 25%;
+  color: var(--text);
+  background-color: var(--elements);
+  -webkit-box-shadow: 1px 1px 12px -2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px 1px 12px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 12px -2px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  padding-right: 15px;
+  margin-top: 50px;
+  border-radius: 8px;
+}
+
+.icon-arrow-left {
+  margin-left: 15px;
+  margin-right: 7px;
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1000px) {
+  .detail-page {
+    margin-left: 40px;
+  }
+
+  .flag-detail {
+    width: 400px;
+  }
+
+  .detail-column {
+    display: block;
+  }
+
+  .border-countries {
+    width: 500px;
+  }
+}
+
 @media only screen and (max-width: 700px) {
   .input {
     width: 90%;
+  }
+
+  .border-countries {
+    width: 400px;
+  }
+
+  .detail-page {
+    margin-left: 40px;
+  }
+
+  .country-detail-wrapper {
+    flex-direction: column;
+  }
+
+  .flag-detail {
+    width: 300px;
+  }
+
+  .detail-column {
+    display: block;
+    /* width: 50%; */
   }
 
   .select {
