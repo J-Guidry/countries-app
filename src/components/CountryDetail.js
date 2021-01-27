@@ -5,7 +5,6 @@ import { ThemeProvider } from "../components/themeContext";
 
 const CountryDetail = () => {
   const location = useLocation();
-  console.log(useContext);
   let [borderCountries, updateBorders] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
   let [error, setError] = useState(null);
