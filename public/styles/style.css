@@ -262,6 +262,7 @@ a {
 
 .country-detail {
   /* display: inline-block; */
+  color: var(--text);
 }
 
 .detail-column {
@@ -286,6 +287,8 @@ a {
   -moz-box-shadow: 1px 1px 12px -2px rgba(0, 0, 0, 0.2);
   box-shadow: 1px 1px 12px -2px rgba(0, 0, 0, 0.2);
   padding: 5px;
+  background-color: var(--elements);
+  color: var(--text);
 }
 
 .back-btn {
@@ -299,6 +302,8 @@ a {
   padding-right: 15px;
   margin-top: 50px;
   border-radius: 8px;
+  border: 0;
+  cursor: pointer;
 }
 
 .icon-arrow-left {
@@ -365,5 +370,19 @@ a {
   .action {
     flex-direction: column;
     display: flex;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .border-countries {
+    flex-direction: column;
+  }
+
+  .country-label {
+    margin-bottom: 20px;
+  }
+
+  .border-country {
+    margin: 10px 0;
   }
 }

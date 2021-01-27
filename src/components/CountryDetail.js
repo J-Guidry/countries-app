@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
+import { ThemeProvider } from "../components/themeContext";
 
-const CountryDetail = (props) => {
+const CountryDetail = () => {
   const location = useLocation();
-
+  console.log(useContext);
   let [borderCountries, updateBorders] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
   let [error, setError] = useState(null);

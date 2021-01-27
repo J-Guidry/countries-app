@@ -1,10 +1,13 @@
 //import React, { Component } from "react";
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "./themeContext";
 
 export default function Actions(props) {
+  const themeObj = useContext(ThemeContext);
+
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path fill="none" 
       stroke="${
-        props.light ? "#111517" : "#ffffff"
+        themeObj.themeBool.lightTheme ? "#111517" : "#ffffff"
       }" stroke-width="3" d="M1 1l8 8 8-8"/></svg>`;
   let base64Svg = window.btoa(svg).toString();
 
