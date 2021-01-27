@@ -8,14 +8,12 @@ const Header = () => {
   function toggleTheme() {
     switchLabel((prevState) => {
       if (prevState === "Dark Mode") {
-        //props.handleToggle("dark");
         themeObj.toggleThemeBool();
         themeObj.toggleTheme("light");
         return "Light Mode";
       } else {
         themeObj.toggleThemeBool();
         themeObj.toggleTheme("dark");
-        //props.handleToggle("light");
         return "Dark Mode";
       }
     });
